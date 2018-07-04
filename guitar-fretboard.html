@@ -6,26 +6,7 @@
 
 <dom-module id="guitar-fretboard">
     <template>
-        <style keys>
-            [squares]{
-                @apply --layout-center;
-                @apply --layout-horizontal;
-                @apply --layout-center-justified;
-            }
-        </style>
         <style>
-            [playbackNote]{
-                margin-top:12px ; 
-                font-size: 26px ;
-                font-weight: 400 ; 
-                color: var(--ac-led-shadow,gray);
-            }
-            [instrumentNote]{
-                margin-top:35px ; 
-                font-size: 26px ;
-                font-weight: 400 ; 
-                color: var(--ac-led-shadow,gray);
-            }
             [wrapper]{
                 height: 100%;
                 width: 100%;
@@ -51,31 +32,6 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
-            [col]{
-                margin-top:0px;
-                height:433px ;
-                @apply --layout-center;
-                @apply --layout-vertical;
-                /* @apply --layout-center-justified; */
-            }
-            [col] *{
-                margin:5px;
-            }
-            [notes]{
-                position: absolute;
-                margin-left:-60px ;
-                margin-top:-60px;
-            }
-            [horizontal-keys]{
-                margin-top:-5px ;
-                margin-right:-45px ;
-                @apply --layout-center;
-                @apply --layout-horizontal;
-                width:50px ;
-            }
-            [horizontal-keys]  *{
-                margin: 0 ;
-            }
             [fret]{
                 height:100%;
                 background-color: rgb(59, 56, 56) ;
@@ -91,7 +47,6 @@
             }
             [fret-ref]{
                 height:100%;
-                /* background-color: rgb(59, 56, 56) ; */
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 @apply --layout-center-justified;
@@ -100,14 +55,12 @@
             [fret-div-ref]{
                 height: 100%; 
                 width:2px; 
-                /* background-color: gray ; */
             }
             [fretnote]{
                 font-weight: 400; 
                 width:100%;
                 padding-top:1vw;
                 padding-bottom:1vw;
-                /* background-color: green ;. */
                 border-radius: 5px;
                 @apply --layout-vertical;
                 @apply --layout-justified;
@@ -129,11 +82,7 @@
             [strings]{
                 @apply --layout-vertical;
                 @apply --layout-justified;
-                /* @apply --layout-center; */
-                /* @apply --layout-center-justified; */
-
                 height: 16vw;
-                /* opacity:0.5 ;  */
                 position: absolute ;
             }
             [string]{
@@ -148,13 +97,8 @@
             }
             [string-ref]{
                 width:100%; 
-                /* height:3px;  */
-                /* opacity: 0.4; */
                 @apply --layout-vertical;
-                /* @apply --layout-justified; */
                 @apply --layout-center; 
-                /* @apply --layout-center-justified; */
-                /* background-color: white ; */
             }
         </style>
         <view-audio channel='0'></view-audio>
@@ -1025,23 +969,6 @@
             constructor() {
                 super();
             }
-            // ___acV_midiEventToAudioNote (channel, midiNote, origin,initiator) {
-            //     if (origin.startsWith('___midi_instrument')  || initiator ==='record')
-            //         return midiNote ;
-            //     return this.___acV_midiEventToAudioNoteDefault(channel, midiNote, origin);
-            // }
-            // ___acV_mapMIDIEventToAcLedId (channel, midiNote, origin ,initiator) {
-            //     if (origin.startsWith('___midi_instrument') || initiator ==='record') {
-            //         if(this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff] === undefined ) 
-            //             return [] ; 
-
-            //         return this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff];
-            //     }
-
-            //     if (this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff] === undefined) 
-            //         return [] ; 
-            //     return this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff];
-            // }
             _setNoteNames () {
                 var nodeList = Polymer.dom(this.root).querySelectorAll('guitar-fretnote');
                 for (var i = 0; i < nodeList.length; i++) {
@@ -1091,24 +1018,6 @@
                 if(channel === 5)
                     return[midiNote-40,22] ; 
             }
-            // ___acV_mapMIDIEventToAcLedState (channel,midiNote,origin,initiator) {
-            //     var len ,res = []; 
-            //     if (origin.startsWith('___midi_instrument') || initiator ==='record') {
-            //         if(this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff] === undefined ) 
-            //             return [] ; 
-            //         len = this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff ].length;
-            //         for(let i = 0 ; i < len ; i ++ )
-            //             res.push(1) ;
-            //         return res ;
-            //     }
-
-            //     if (this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff] === undefined) 
-            //         return [] ; 
-            //     len = this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff ].length ; 
-            //     for(let i = 0 ; i < len ; i ++ )
-            //         res.push(1) ;
-            //     return res ;
-            // }
             ___acV_onAddPitch () {
                 this._setNoteNames();
             }

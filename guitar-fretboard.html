@@ -34,9 +34,10 @@
             }
             [fret]{
                 height:100%;
-                background-color: rgb(59, 56, 56) ;
+                background-color: var(--ac-led-shadow0,gray);
                 @apply --layout-vertical;
                 @apply --layout-justified;
+                @apply --layout-center;
                 @apply --layout-center-justified;
 
             }
@@ -100,6 +101,21 @@
                 @apply --layout-vertical;
                 @apply --layout-center; 
             }
+            [dot]{
+                border-radius: 100% ; 
+                /* background-color: var(--ac-led-shadow2,gray); */
+                background-color: gray ;
+                opacity:0.6;
+                margin-top:-0.6vw;
+                height:1vw;
+                width:1vw;
+            }
+            [dot-wrapper]{
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
         </style>
         <view-audio channel='0'></view-audio>
         <view-audio channel='1'></view-audio>
@@ -115,43 +131,66 @@
                     <div fret-div ></div>
                     <div fret style='width:5.3%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:5%'></div>
+                    <div fret style='width:5%'>
+                        <div dot></div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:4.72%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:4.45%'></div>
+                    <div fret style='width:4.45%'>
+                        <div dot></div> 
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:4.2%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:3.97%'></div>
+                    <div fret style='width:3.97%'>
+                        <div dot></div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:3.75%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:3.54%'></div>
+                    <div fret style='width:3.54%'>
+                        <div dot></div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:3.34%'></div>
                     <div fret-div ></div>
                     <div fret style='width:3.15%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:2.97%'></div>
+                    <div fret style='width:2.97%'>
+                        <div dot-wrapper style='height: 50%; width:1px;'>
+                            <div style='margin-top:0.2vw;' dot></div>
+                        </div>
+                        <div dot-wrapper style='height: 50%; width:1px;'>
+                            <div style='margin-top:-1.15vw;' dot></div>
+                        </div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:2.81%'></div>
                     <div fret-div ></div>
                     <div fret style='width:2.65%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:2.5%'></div>
+                    <div fret style='width:2.5%'>
+                        <div dot></div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:2.36%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:2.23%'></div>
+                    <div fret style='width:2.23%'>
+                        <div dot></div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:2.1%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:1.98%'></div>
+                    <div fret style='width:1.98%'>
+                        <div dot></div>
+                    </div>
                     <div fret-div ></div>
                     <div fret style='width:1.87%'></div>
                     <div fret-div ></div>
-                    <div fret style='width:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' ></div>
+                    <div fret style='width:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' >
+                        <div dot></div>
+                    </div>
 
                     <div strings style='width:calc(72.25% + 42px);'>
                             <div string style='height:0.2vw;'></div>

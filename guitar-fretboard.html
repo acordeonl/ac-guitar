@@ -1,0 +1,392 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ac-view/ac-led-group.html">
+<link rel="import" href="../ac-view/view-audio.html">
+<link rel="import" href="./guitar-fretnote.html">
+
+<dom-module id="guitar-fretboard">
+    <template>
+        <style keys>
+            [squares]{
+                @apply --layout-center;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+        </style>
+        <style>
+            [playbackNote]{
+                margin-top:12px ; 
+                font-size: 26px ;
+                font-weight: 400 ; 
+                color: var(--ac-led-shadow,gray);
+            }
+            [instrumentNote]{
+                margin-top:35px ; 
+                font-size: 26px ;
+                font-weight: 400 ; 
+                color: var(--ac-led-shadow,gray);
+            }
+            [wrapper]{
+                height: 100%;
+                width: 100%;
+                margin-left: 0px;
+                @apply --layout-center;
+                @apply --layout-horizontal;
+                @apply --layout-center-justified;
+            }
+            [guitar-wrapper]{
+                margin-top:0 ;
+                margin-left:0;
+                height: 80vh;
+                width: 100%;
+                @apply --layout-horizontal;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [fretboard]{
+                margin-left:0px ;
+                width: 112vw;
+                height: 20vw;
+                @apply --layout-horizontal;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [col]{
+                margin-top:0px;
+                height:433px ;
+                @apply --layout-center;
+                @apply --layout-vertical;
+                /* @apply --layout-center-justified; */
+            }
+            [col] *{
+                margin:5px;
+            }
+            [notes]{
+                position: absolute;
+                margin-left:-60px ;
+                margin-top:-60px;
+            }
+            [horizontal-keys]{
+                margin-top:-5px ;
+                margin-right:-45px ;
+                @apply --layout-center;
+                @apply --layout-horizontal;
+                width:50px ;
+            }
+            [horizontal-keys]  *{
+                margin: 0 ;
+            }
+            [fret]{
+                height:100%;
+                background-color: rgb(59, 56, 56) ;
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center-justified;
+
+            }
+            [fret-div]{
+                height: 100%; 
+                width:2px; 
+                background-color: gray ;
+            }
+            [fret-ref]{
+                height:100%;
+                /* background-color: rgb(59, 56, 56) ; */
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center-justified;
+
+            }
+            [fret-div-ref]{
+                height: 100%; 
+                width:2px; 
+                /* background-color: gray ; */
+            }
+            [fretnote]{
+                font-weight: 400; 
+                width:100%;
+                padding-top:1vw;
+                padding-bottom:1vw;
+                /* background-color: green ;. */
+                border-radius: 5px;
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [fretpositions]{
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                height: 16vw;
+            }
+            [fretpos]{
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center; 
+                @apply --layout-center-justified;
+                color:white ;
+            }
+            [strings]{
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                /* @apply --layout-center; */
+                /* @apply --layout-center-justified; */
+
+                height: 16vw;
+                /* opacity:0.5 ;  */
+                position: absolute ;
+            }
+            [string]{
+                width:100%; 
+                height:3px; 
+                opacity: 0.4;
+                background-color: white ;
+            }
+        </style>
+        <view-audio channel='0'></view-audio>
+        <div wrapper style='margin-left:14px;'>
+            <div guitar-wrapper>
+                <div fretboard style='position:absolute;'>
+                    <div fret-div style='width:1.98%; border-top-left-radius: 7px;border-bottom-left-radius: 7px;'></div>
+                    <div fret style='width:5.61%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:5.3%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:5%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:4.72%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:4.45%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:4.2%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:3.97%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:3.75%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:3.54%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:3.34%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:3.15%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.97%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.81%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.65%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.5%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.36%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.23%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:2.1%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:1.98%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:1.87%'></div>
+                    <div fret-div ></div>
+                    <div fret style='width:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' ></div>
+
+                    <div strings style='width:calc(72.25% + 42px);'>
+                            <div string style='height:0.2vw;'></div>
+                            <div string style='height:0.28vw;'></div>
+                            <div string style='height:0.36vw;'></div>
+                            <div string style='height:0.44vw;'></div>
+                            <div string style='height:0.52vw;'></div>
+                            <div string style='height:0.6vw;'></div>
+                            <!-- <div string></div>
+                            <div string></div>
+                            <div string></div>
+                            <div string></div> -->
+                    </div>
+                </div>
+
+
+                <div fretboard style='position:absolute; opacity:1;'>
+                    <div fret-ref style='width:1.98%; border-top-left-radius: 7px;border-bottom-left-radius: 7px;'>
+                    </div>
+                    <div fret-ref style='width:5.61%'>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:5.3%'>
+                        <div fretpositions>
+                            <div fretpos style='height:0.2vw;width:100%;'>
+                                <div fretnote>
+                                    <guitar-fretnote acLed ac-id='2' channel='0'></guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='height:0.28vw;width:100%;'>
+                                <div fretnote>
+                                    <guitar-fretnote acLed ac-id='2' channel='1'></guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='height:0.36vw;width:100%;'>
+                                <div fretnote>
+                                    <guitar-fretnote acLed ac-id='2' channel='2'></guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='height:0.44vw;width:100%;'>
+                                <div fretnote>
+                                    <guitar-fretnote acLed ac-id='2' channel='3'></guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='height:0.52vw;width:100%;'>
+                                <div fretnote>
+                                    <guitar-fretnote acLed ac-id='2' channel='4'></guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='height:0.6vw;width:100%;'>
+                               <div fretnote>
+                                   <guitar-fretnote acLed ac-id='2' channel='5'></guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:5%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:4.72%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:4.45%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:4.2%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:3.97%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:3.75%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:3.54%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:3.34%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:3.15%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.97%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.81%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.65%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.5%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.36%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.23%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:2.1%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:1.98%'></div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:1.87%'>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='width:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' >
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </template>
+    <script>
+        class GuitarFretboard extends ACLedGroup {
+            static get is() { return 'guitar-fretboard'; }
+            static get properties() {return {
+                midiNoteToGUI:{type:Array,value:[]}
+            }}
+            constructor() {
+                super();
+            }
+            ___acV_midiEventToAudioNote (channel, midiNote, origin,initiator) {
+                if (origin.startsWith('___midi_instrument')  || initiator ==='record')
+                    return midiNote ;
+                return this.___acV_midiEventToAudioNoteDefault(channel, midiNote, origin);
+            }
+            ___acV_mapMIDIEventToAcLedId (channel, midiNote, origin ,initiator) {
+                if (origin.startsWith('___midi_instrument') || initiator ==='record') {
+                    if(this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff] === undefined ) 
+                        return [] ; 
+
+                    return this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff];
+                }
+
+                if (this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff] === undefined) 
+                    return [] ; 
+                return this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff];
+            }
+            ___acV_mapMIDIEventToAcLedState (channel,midiNote,origin,initiator) {
+                var len ,res = []; 
+                if (origin.startsWith('___midi_instrument') || initiator ==='record') {
+                    if(this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff] === undefined ) 
+                        return [] ; 
+                    len = this.midiNoteToGUI[midiNote - this.___acV_viewPitchDiff ].length;
+                    for(let i = 0 ; i < len ; i ++ )
+                        res.push(1) ;
+                    return res ;
+                }
+
+                if (this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff] === undefined) 
+                    return [] ; 
+                len = this.midiNoteToGUI[midiNote  + this.___acV_recordingPitchDiff - this.___acV_viewPitchDiff ].length ; 
+                for(let i = 0 ; i < len ; i ++ )
+                    res.push(1) ;
+                return res ;
+            }
+            ready() {
+                super.ready() ;
+                this.midiNoteToGUI = [] ;
+
+                this.midiNoteToGUI[60] = []; // C4
+                this.midiNoteToGUI[61] = []; // C#4
+                this.midiNoteToGUI[62] = []; // D4
+                this.midiNoteToGUI[63] = []; //  Eb4
+                this.midiNoteToGUI[64] = []; // E4 
+                this.midiNoteToGUI[65] = []; //  F4
+                this.midiNoteToGUI[66] = []; // F#4
+                this.midiNoteToGUI[67] = []; // G4  
+                this.midiNoteToGUI[68] = []; // G#4 
+                this.midiNoteToGUI[69] = []; // A4
+                this.midiNoteToGUI[70] = []; // Bb4  
+                this.midiNoteToGUI[71] = []; // B4
+
+                this.midiNoteToGUI[72] = []; //  C5
+                this.midiNoteToGUI[73] = []; //  C#5
+                this.midiNoteToGUI[74] = []; // D5
+                this.midiNoteToGUI[75] = []; // Eb5
+                this.midiNoteToGUI[76] = []; // E5
+                this.midiNoteToGUI[77] = []; //  F5
+                this.midiNoteToGUI[78] = []; // F#5
+                this.midiNoteToGUI[79] = []; //  G5
+                this.midiNoteToGUI[80] = []; // G#5
+                this.midiNoteToGUI[81] = []; // A5
+                this.midiNoteToGUI[82] = []; // Bb5
+                this.midiNoteToGUI[83] = []; // B5
+
+                this.midiNoteToGUI[84] = []; // C6
+                this.midiNoteToGUI[85] = []; // C#6
+                this.midiNoteToGUI[86] = []; // D6
+                this.midiNoteToGUI[87] = []; // Eb6
+                this.midiNoteToGUI[88] = []; // E6
+                this.midiNoteToGUI[89] = []; //  F6
+                this.midiNoteToGUI[90] = []; // F#6
+                this.midiNoteToGUI[91] = []; // G6
+                this.midiNoteToGUI[92] = []; // G#6
+                this.midiNoteToGUI[93] = []; // A6
+                this.midiNoteToGUI[94] = []; // Bb6
+                this.midiNoteToGUI[95] = []; // B6
+                
+                this.midiNoteToGUI[96] = []; // C7
+                this.midiNoteToGUI[97] = []; // C#7
+                this.midiNoteToGUI[98] = []; // D7
+                this.midiNoteToGUI[99] = []; // Eb7
+                this.midiNoteToGUI[100] = []; // E
+                this.midiNoteToGUI[101] = []; // F7 
+                this.midiNoteToGUI[102] = []; // F#7 
+
+
+            }
+        }
+        customElements.define('guitar-fretboard', GuitarFretboard);
+    </script>
+</dom-module>

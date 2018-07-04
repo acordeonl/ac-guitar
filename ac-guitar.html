@@ -1,0 +1,30 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ac-view/ac-view.html">
+<link rel="import" href="./guitar-fretboard.html">
+<dom-module id="ac-guitar">
+    <template>
+        <style>
+        </style>
+        <guitar-fretboard acLedGroup name='guitar'>
+        </guitar-fretboard>
+    </template>
+    <script>
+        class ACGuitar extends ACView {
+            static get is() { return 'ac-guitar'; }
+            static get properties() {return {}}
+            constructor() {
+                super();
+            }
+            ___acV_handleMIDIEvent (e) {
+                this.shadowRoot.querySelector('guitar-fretboard').___acV_onMIDIEvent(e);
+            }
+            ready() {
+                super.ready() ;
+                this.___acV_setName('guitar') ; 
+                this.___acV_setDefaultReverb(30);
+                this.___acV_setDefaultViewPitch(64) ; 
+            }
+        }
+        customElements.define('ac-guitar', ACGuitar);
+    </script>
+</dom-module>

@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ac-view/ac-led.html">
+
+<dom-module id="guitar-fretnote">
+    <template>
+        <style>
+            :host{
+                width:100% ; 
+                height: 100% ; 
+                display: block;
+                position: relative;
+            }
+            [shadow]{
+                position: absolute;
+                margin-top:3px ;
+                width:100%;
+                height:100%; 
+                border-radius: 5px;
+                background-color: white ; 
+                font-weight: 400; 
+                padding-top:1vw;
+                padding-bottom:1vw;
+                background-color: white ;
+            }
+            [rectangle]{
+                position: absolute;
+                width:100%;
+                height:100%; 
+                border-radius: 5px;
+                background-color: green;
+                font-weight: 400; 
+                padding-top:1vw;
+                padding-bottom:1vw;
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [acLed] {
+                position: absolute;
+                width:100%;
+                height:100%; 
+                border-radius: 5px;
+                background-color: gray ;
+                font-weight: 400; 
+                padding-top:1vw;
+                padding-bottom:1vw;
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [wrapper]{
+                position: relative ;
+                @apply --layout-vertical;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+        </style>
+        <div wrapper>
+            <div shadow ></div>
+            <div rectangle >
+                <!-- <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
+                    [[note]]
+                </div> -->
+            </div>
+            <div acLed >
+                <!-- override default -->
+                <!-- <div note>
+                    F#
+                </div> -->
+            </div>
+        </div>
+    </template>
+    <script>
+        class GuitarFretnote extends ACLed {
+            static get is() { return 'guitar-fretnote'; }
+            static get properties() {return {
+            }}
+            constructor() {
+                super();
+            }
+            ready() {
+                super.ready() ;
+            }
+        }
+        customElements.define('guitar-fretnote', GuitarFretnote);
+    </script>
+</dom-module>

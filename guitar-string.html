@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../ac-view/ac-led.html">
 
-<dom-module id="guitar-fretnote">
+<dom-module id="guitar-string">
     <template>
         <style>
             :host{
@@ -26,10 +26,9 @@
                 width:100%;
                 height:100%; 
                 border-radius: 5px;
-                /* background-color: green; */
                 font-weight: 400; 
-                padding-top:1vw;
-                padding-bottom:1vw;
+                padding-top:0.1vw;
+                padding-bottom:0.1vw;
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 @apply --layout-center;
@@ -42,8 +41,8 @@
                 border-radius: 5px;
                 background-color: gray ;
                 font-weight: 400; 
-                padding-top:1vw;
-                padding-bottom:1vw;
+                padding-top:0.2vw;
+                padding-bottom:0.2vw;
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 @apply --layout-center;
@@ -73,8 +72,8 @@
         </div>
     </template>
     <script>
-        class GuitarFretnote extends ACLed {
-            static get is() { return 'guitar-fretnote'; }
+        class GuitarString extends ACLed {
+            static get is() { return 'guitar-string'; }
             static get properties() {return {
             }}
             constructor() {
@@ -84,6 +83,6 @@
                 super.ready() ;
             }
         }
-        customElements.define('guitar-fretnote', GuitarFretnote);
+        customElements.define('guitar-string', GuitarString);
     </script>
 </dom-module>

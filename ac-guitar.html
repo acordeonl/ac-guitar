@@ -16,6 +16,7 @@
                 super();
             }
             ___acV_handleMIDIEvent (e) {
+                console.log(e);
                 this.shadowRoot.querySelector('guitar-fretboard').___acV_onMIDIEvent(e);
             }
             ready() {
@@ -23,6 +24,7 @@
                 this.___acV_setName('guitar') ; 
                 this.___acV_setDefaultReverb(30);
                 this.___acV_setDefaultViewPitch(64) ; 
+                this.___acV_canDisplayNotes(true) ; 
             }
         }
         customElements.define('ac-guitar', ACGuitar);

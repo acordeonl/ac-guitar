@@ -10,25 +10,12 @@
                 display: block;
                 position: relative;
             }
-            [shadow]{
-                position: absolute;
-                margin-top:3px ;
-                width:100%;
-                height:100%; 
-                border-radius: 5px;
-                /* background-color: white ;  */
-                font-weight: 400; 
-                padding-top:1vw;
-                padding-bottom:1vw;
-            }
             [rectangle]{
                 position: absolute;
                 width:100%;
                 height:100%; 
                 border-radius: 5px;
                 font-weight: 400; 
-                padding-top:0.1vw;
-                padding-bottom:0.1vw;
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 @apply --layout-center;
@@ -41,8 +28,6 @@
                 border-radius: 5px;
                 background-color: gray ;
                 font-weight: 400; 
-                padding-top:0.2vw;
-                padding-bottom:0.2vw;
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 @apply --layout-center;
@@ -57,7 +42,6 @@
             }
         </style>
         <div wrapper>
-            <div shadow ></div>
             <div rectangle >
                 <!-- <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
                     [[note]]
@@ -75,12 +59,50 @@
         class GuitarString extends ACLed {
             static get is() { return 'guitar-string'; }
             static get properties() {return {
+                stringType:{type:Number,value:1},
             }}
             constructor() {
                 super();
             }
             ready() {
                 super.ready() ;
+                if(this.stringType === 1){
+                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.2vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.height = '0.2vw' ; 
+                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.08vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.08vw' ; 
+                }
+                if(this.stringType === 2){
+                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.28vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.height = '0.28vw' ; 
+                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.1vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.1vw' ; 
+                }
+                if(this.stringType === 3){
+                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.36vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.height = '0.36vw' ; 
+                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.12vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.12vw' ; 
+                }
+                if(this.stringType === 4){
+                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.44vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.height = '0.44vw' ; 
+                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.22vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.22vw' ; 
+                }
+                if(this.stringType === 5){
+                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.52vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.height = '0.52vw' ; 
+                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.25vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.25vw' ; 
+                }
+                if(this.stringType === 6){
+                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.6vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.height = '0.6vw' ; 
+                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.3vw' ; 
+                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.3vw' ; 
+                }
+                    
             }
         }
         customElements.define('guitar-string', GuitarString);

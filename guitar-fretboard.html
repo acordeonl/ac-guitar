@@ -148,11 +148,12 @@
             }
             [string-ref]{
                 width:100%; 
-                height:3px; 
+                /* height:3px;  */
                 /* opacity: 0.4; */
                 @apply --layout-vertical;
-                @apply --layout-justified;
+                /* @apply --layout-justified; */
                 @apply --layout-center; 
+                /* @apply --layout-center-justified; */
                 /* background-color: white ; */
             }
         </style>
@@ -209,7 +210,7 @@
                     <div fret style='width:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' ></div>
 
                     <div strings style='width:calc(72.25% + 42px);'>
-                            <div string test-string style='height:0.2vw;'></div>
+                            <div string style='height:0.2vw;'></div>
                             <div string style='height:0.28vw;'></div>
                             <div string style='height:0.36vw;'></div>
                             <div string style='height:0.44vw;'></div>
@@ -991,22 +992,22 @@
 
                     <div strings style='width:calc(72.25% + 42px);'>
                             <div string-ref style='height:0.2vw;'>
-                                <guitar-string acLed ac-id='22' channel='15'>  </guitar-string>
+                                <guitar-string string-type='1' acLed ac-id='22' channel='15'>  </guitar-string>
                             </div>
-                            <div string-ref style='height:0.28vw; opacity:1;'>
-                                <guitar-string acLed ac-id='22' channel='14'>  </guitar-string>
+                            <div string-ref style='height:0.28vw;'>
+                                <guitar-string string-type='2' acLed ac-id='22' channel='14'>  </guitar-string>
                             </div>
                             <div string-ref style='height:0.36vw;'>
-                                <guitar-string acLed ac-id='22' channel='13'>  </guitar-string>
+                                <guitar-string string-type='3' acLed ac-id='22' channel='13'>  </guitar-string>
                             </div>
                             <div string-ref style='height:0.44vw;'>
-                                <guitar-string acLed ac-id='22' channel='12'>  </guitar-string>
+                                <guitar-string string-type='4' acLed ac-id='22' channel='12'>  </guitar-string>
                             </div>
                             <div string-ref style='height:0.52vw;'>
-                                <guitar-string acLed ac-id='22' channel='11'>  </guitar-string>
+                                <guitar-string  string-type='5' acLed ac-id='22' channel='11'>  </guitar-string>
                             </div>
-                            <div string-ref style='height:0.6vw;'>
-                                <guitar-string acLed ac-id='22' channel='10'>  </guitar-string>
+                            <div string-ref  style='height:0.6vw;'>
+                                <guitar-string string-type='6' acLed ac-id='22' channel='10'>  </guitar-string>
                             </div>
                     </div>
                 </div>

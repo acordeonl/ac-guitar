@@ -56,19 +56,28 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
+            [note] {
+                color: var(--content-background1, #fafafa);
+                font-weight: 400;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                @apply --layout-horizontal;
+                height: 95%;
+                width: 100%;
+                text-align: center;
+            }
         </style>
         <div wrapper>
             <div shadow ></div>
             <div rectangle >
-                <!-- <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
+                <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
                     [[note]]
-                </div> -->
+                </div>
             </div>
             <div acLed >
                 <!-- override default -->
-                <!-- <div note>
-                    F#
-                </div> -->
+                <div note>
+                </div>
             </div>
         </div>
     </template>
@@ -79,6 +88,12 @@
             }}
             constructor() {
                 super();
+            }
+            _computeDisplay (value) {
+                if (value) {
+                    return 'block' ; 
+                }
+                return 'none'
             }
             ready() {
                 super.ready() ;

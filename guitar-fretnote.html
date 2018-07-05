@@ -72,20 +72,20 @@
             .vertical [noteNames]{
                 transform: rotate(180deg) ; 
             }
-            .horziontal{
-
+            .leftHanded{
+                transform: scale(-1,1) ; 
             }
         </style>
         <local-dom mobile="{{mobile}}" tablet="{{tablet}}" desktop="{{desktop}}">
             <div class$="{{_computeRotation(___acV_rotation,mobile)}}" wrapper>
-                <div rectangle >
+                <div rectangle class$="{{_computeLeftHanded()}}"  >
                     <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
                         [[note]]
                     </div>
                 </div>
-                <div acLed >
+                <div class$="{{_computeLeftHanded()}}" acLed >
                     <!-- override default -->
-                    <div note>
+                    <div  note>
                     </div>
                 </div>
             </div>
@@ -95,15 +95,21 @@
         class GuitarFretnote extends ACLed {
             static get is() { return 'guitar-fretnote'; }
             static get properties() {return {
-                ___acV_rotation:{type:Boolean,value:false},
+                ___acV_leftHanded:{type:Boolean,value:false}
             }}
             constructor() {
                 super();
             }
+            _computeLeftHanded() {
+                if(this.___acV_leftHanded) {
+                    return 'leftHanded' ; 
+                }
+                return '' ; 
+            }
             _computeRotation(rotation, mobile) {
                 if (rotation || mobile )
                     return "vertical";
-                return "horizontal";
+                return "";
             }
             _computeDisplay (value) {
                 if (value) {

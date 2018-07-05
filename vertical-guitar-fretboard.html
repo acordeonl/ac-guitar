@@ -1,0 +1,1080 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ac-view/ac-led-group.html">
+<link rel="import" href="../ac-view/view-audio.html">
+<link rel="import" href="./vertical-guitar-fretnote.html">
+<link rel="import" href="./vertical-guitar-string.html">
+
+<dom-module id="vertical-guitar-fretboard">
+    <template>
+        <style>
+            [wrapper]{
+                width: 100%;
+                height: 100%;
+                margin-left: 0px;
+                @apply --layout-center;
+                @apply --layout-vertical;
+                @apply --layout-center-justified;
+            }
+            [guitar-wrapper]{
+                margin-left:0 ;
+                margin-left:0;
+                width: 80vw;
+                height: 100%;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                transform: scale(-1,1) ; 
+            }
+            [fretboard]{
+                margin-left:0px ;
+                height: 112vh;
+                width: 20vh;
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [fret]{
+                width:100%;
+                background-color: var(--ac-led-shadow0,gray);
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+
+            }
+            [fret-div]{
+                width: 100%; 
+                height:2px; 
+                background-color: gray ;
+            }
+            [fret-ref]{
+                width:100%;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center-justified;
+
+            }
+            [fret-div-ref]{
+                width: 100%; 
+                height:2px; 
+            }
+            [fretnote]{
+                font-weight: 400; 
+                height:100%;
+                padding-right:1vh;
+                padding-left:1vh;
+                border-radius: 5px;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [fretpositions]{
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                width: 16vh;
+            }
+            [fretpos]{
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center; 
+                @apply --layout-center-justified;
+                color:white ;
+            }
+            [strings]{
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                width: 16vh;
+                position: absolute ;
+            }
+            [string]{
+                height:100%; 
+                width:3px; 
+                opacity: 0.4;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center; 
+                @apply --layout-center-justified;
+                background-color: white ;
+            }
+            [string-ref]{
+                height:100%; 
+                @apply --layout-horizontal;
+                @apply --layout-center; 
+            }
+            [dot]{
+                border-radius: 100% ; 
+                /* background-color: var(--ac-led-shadow2,gray); */
+                background-color: gray ;
+                opacity:0.6;
+                margin-left:-0.6vh;
+                width:1vh;
+                height:1vh;
+            }
+            [dot-wrapper]{
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+        </style>
+        <view-audio channel='0'></view-audio>
+        <view-audio channel='1'></view-audio>
+        <view-audio channel='2'></view-audio>
+        <view-audio channel='3'></view-audio>
+        <view-audio channel='4'></view-audio>
+        <view-audio channel='5'></view-audio>
+        <div wrapper style='margin-left:14px;'>
+            <div guitar-wrapper>
+                <div fretboard style='position:absolute;'>
+                    <div fret-div style='height:1.98%; border-top-left-radius: 7px;border-top-right-radius: 7px;'></div>
+                    <div fret style='height:5.61%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:5.3%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:5%'>
+                        <div dot></div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:4.72%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:4.45%'>
+                        <div dot></div> 
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:4.2%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:3.97%'>
+                        <div dot></div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:3.75%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:3.54%'>
+                        <div dot></div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:3.34%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:3.15%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.97%'>
+                        <div dot-wrapper style='width: 50%; height:1px;'>
+                            <div style='margin-left:0.2vh;' dot></div>
+                        </div>
+                        <div dot-wrapper style='width: 50%; height:1px;'>
+                            <div style='margin-left:-1.15vh;' dot></div>
+                        </div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.81%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.65%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.5%'>
+                        <div dot></div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.36%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.23%'>
+                        <div dot></div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:2.1%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:1.98%'>
+                        <div dot></div>
+                    </div>
+                    <div fret-div ></div>
+                    <div fret style='height:1.87%'></div>
+                    <div fret-div ></div>
+                    <div fret style='height:1.77%;border-bottom-left-radius: 7px;border-bottom-right-radius: 7px;' >
+                        <div dot></div>
+                    </div>
+
+                    <div strings style='height:calc(72.25% + 42px);'>
+                            <div string style='width:0.2vh;'></div>
+                            <div string style='width:0.28vh;'></div>
+                            <div string style='width:0.36vh;'></div>
+                            <div string style='width:0.44vh;'></div>
+                            <div string style='width:0.52vh;'></div>
+                            <div string style='width:0.6vh;'></div>
+                    </div>
+                </div>
+
+
+                <div fretboard style='position:absolute; opacity:1;'>
+                    
+                    <div strings style='height:calc(72.25% + 42px);'>
+                            <div string-ref style='width:0.2vh;'>
+                                <vertical-guitar-string string-type='1' acLed ac-id='22' channel='0'>  </vertical-guitar-string>
+                            </div>
+                            <div string-ref style='width:0.28vh;'>
+                                <vertical-guitar-string string-type='2' acLed ac-id='22' channel='1'>  </vertical-guitar-string>
+                            </div>
+                            <div string-ref style='width:0.36vh;'>
+                                <vertical-guitar-string string-type='3' acLed ac-id='22' channel='2'>  </vertical-guitar-string>
+                            </div>
+                            <div string-ref style='width:0.44vh;'>
+                                <vertical-guitar-string string-type='4' acLed ac-id='22' channel='3'>  </vertical-guitar-string>
+                            </div>
+                            <div string-ref style='width:0.52vh;'>
+                                <vertical-guitar-string  string-type='5' acLed ac-id='22' channel='4'>  </vertical-guitar-string>
+                            </div>
+                            <div string-ref  style='width:0.6vh;'>
+                                <vertical-guitar-string string-type='6' acLed ac-id='22' channel='5'>  </vertical-guitar-string>
+                            </div>
+                    </div>
+
+                    <div fret-ref style='height:1.98%; border-top-left-radius: 7px;border-bottom-left-radius: 7px;'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='0' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='0' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='0' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='0' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='0' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='0' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-ref style='height:5.61%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='1' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='1' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='1' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='1' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='1' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='1' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:5.3%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='2' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='2' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='2' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='2' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='2' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='2' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:5%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='3' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='3' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='3' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='3' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='3' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='3' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:4.72%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='4' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='4' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='4' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='4' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='4' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='4' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:4.45%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='5' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='5' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='5' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='5' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='5' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='5' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:4.2%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='6' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='6' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='6' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='6' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='6' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='6' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:3.97%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='7' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='7' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='7' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='7' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='7' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='7' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:3.75%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='8' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='8' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='8' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='8' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='8' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='8' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:3.54%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='9' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='9' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='9' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='9' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='9' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='9' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:3.34%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='10' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='10' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='10' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='10' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='10' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='10' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:3.15%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='11' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='11' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='11' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='11' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='11' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='11' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.97%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='12' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='12' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='12' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='12' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='12' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='12' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.81%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='13' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='13' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='13' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='13' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='13' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='13' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.65%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='14' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='14' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='14' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='14' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='14' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='14' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.5%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='15' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='15' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='15' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='15' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='15' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='15' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.36%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='16' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='16' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='16' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='16' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='16' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='16' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.23%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='17' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='17' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='17' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='17' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='17' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='17' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:2.1%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='18' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='18' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='18' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='18' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='18' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='18' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:1.98%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='19' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='19' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='19' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='19' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='19' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='19' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:1.87%'>
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='20' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='20' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='20' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='20' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='20' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='20' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div fret-div-ref ></div>
+                    <div fret-ref style='height:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' >
+                        <div fretpositions>
+                            <div fretpos style='width:0.2vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='21' channel='0'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.28vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='21' channel='1'></vertical-guitar-fretnote>
+                                </div>
+                            </div>  
+                            <div fretpos style='width:0.36vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='21' channel='2'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.44vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='21' channel='3'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.52vh;height:100%;'>
+                                <div fretnote>
+                                    <vertical-guitar-fretnote acLed ac-id='21' channel='4'></vertical-guitar-fretnote>
+                                </div>
+                            </div>
+                            <div fretpos style='width:0.6vh;height:100%;'>
+                               <div fretnote>
+                                   <vertical-guitar-fretnote acLed ac-id='21' channel='5'></vertical-guitar-fretnote>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </template>
+    <script>
+        class VerticalGuitarFretboard extends ACLedGroup {
+            static get is() { return 'vertical-guitar-fretboard'; }
+            static get properties() {return {
+                midiNoteToGUI:{type:Array,value:[]}
+            }}
+            constructor() {
+                super();
+            }
+            _setNoteNames () {
+                var nodeList = Polymer.dom(this.root).querySelectorAll('vertical-guitar-fretnote');
+                for (var i = 0; i < nodeList.length; i++) {
+                    if(nodeList[i].channel === 0)
+                        nodeList[i].note = this.___acV_getMIDINoteName(nodeList[i].acId+64+this.___acV_viewPitchDiff) ;     
+                    if(nodeList[i].channel === 1)
+                        nodeList[i].note = this.___acV_getMIDINoteName(nodeList[i].acId+59+this.___acV_viewPitchDiff) ;     
+                    if(nodeList[i].channel === 2)
+                        nodeList[i].note = this.___acV_getMIDINoteName(nodeList[i].acId+55+this.___acV_viewPitchDiff) ;     
+                    if(nodeList[i].channel === 3)
+                        nodeList[i].note = this.___acV_getMIDINoteName(nodeList[i].acId+50+this.___acV_viewPitchDiff) ;     
+                    if(nodeList[i].channel === 4)
+                        nodeList[i].note = this.___acV_getMIDINoteName(nodeList[i].acId+45+this.___acV_viewPitchDiff) ;     
+                    if(nodeList[i].channel === 5)
+                        nodeList[i].note = this.___acV_getMIDINoteName(nodeList[i].acId+40+this.___acV_viewPitchDiff) ;     
+                }
+            }
+            ___acV_editMIDI_IN_event(e) {
+                if(e.channel === 15 ) 
+                    e.channel = 0 ; 
+                if(e.channel === 14 ) 
+                    e.channel = 1 ; 
+                if(e.channel === 13 ) 
+                    e.channel = 2 ; 
+                if(e.channel === 12 ) 
+                    e.channel = 3 ; 
+                if(e.channel === 11 ) 
+                    e.channel = 4 ; 
+                if(e.channel === 10 ) 
+                    e.channel = 5 ; 
+                return e ;
+            }
+            ___acV_mapMIDIEventToAcLedState(channel,midiNote){
+                return [1,1] ;
+            }
+            ___acV_mapMIDIEventToAcLedId (channel, midiNote) {
+                if(channel === 0)
+                    return[midiNote-64,22] ; 
+                if(channel === 1)
+                    return[midiNote-59,22] ; 
+                if(channel === 2)
+                    return[midiNote-55,22] ; 
+                if(channel === 3)
+                    return[midiNote-50,22] ; 
+                if(channel === 4)
+                    return[midiNote-45,22] ; 
+                if(channel === 5)
+                    return[midiNote-40,22] ; 
+            }
+            ___acV_onAddPitch () {
+                this._setNoteNames();
+            }
+            ready() {
+                super.ready() ;
+                
+                this.___acV_setChord(69, 'M', [
+                    [0, 64],[1,61],[2,57],[3,52],[4,45]
+                ]);
+                this.___acV_setChord(70, 'M', [
+                    [1, 62],[2,58],[3,53],[4,46]
+                ]);
+
+                this._setNoteNames();
+
+            }
+        }
+        customElements.define('vertical-guitar-fretboard', VerticalGuitarFretboard);
+    </script>
+</dom-module>

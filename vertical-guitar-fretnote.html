@@ -1,0 +1,98 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ac-view/ac-led.html">
+
+<dom-module id="vertical-guitar-fretnote">
+    <template>
+        <style>
+            :host{
+                width:100% ; 
+                height: 100% ; 
+                display: flex;
+                position: relative;
+            }
+            [rectangle]{
+                position: absolute;
+                width:100%;
+                height:100%; 
+                border-radius: 5px;
+                /* background-color: green; */
+                font-weight: 400; 
+                padding-right:1vh;
+                padding-left:1vh;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [acLed] {
+                position: absolute;
+                width:100%;
+                height:100%; 
+                border-radius: 5px;
+                background-color: gray ;
+                font-weight: 400; 
+                padding-right:1vh;
+                padding-left:1vh;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [wrapper]{
+                position: relative ;
+                @apply --layout-horizontal;
+                @apply --layout-justified;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+            }
+            [note] {
+                color: var(--paper-icon-color, #fafafa);
+                font-weight: 400;
+                font-size:12px;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                @apply --layout-vertical;
+                height: 95%;
+                width: 100%;
+                text-align: center;
+                transform: scale(-1,1) rotate(-90deg) ;
+            }
+            [notenames]{
+                transform:scale(-1,1) rotate(-90deg) ; 
+                font-size: 12px;
+            }
+        </style>
+        <div wrapper>
+            <div rectangle >
+                <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
+                    [[note]]
+                </div>
+            </div>
+            <div acLed >
+                <!-- override default -->
+                <div note>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        class VerticalGuitarFretnote extends ACLed {
+            static get is() { return 'vertical-guitar-fretnote'; }
+            static get properties() {return {
+            }}
+            constructor() {
+                super();
+            }
+            _computeDisplay (value) {
+                if (value) {
+                    return 'flex' ; 
+                }
+                return 'none'
+            }
+            ready() {
+                super.ready() ;
+            }
+        }
+        customElements.define('vertical-guitar-fretnote', VerticalGuitarFretnote);
+    </script>
+</dom-module>

@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../ac-view/ac-led.html">
+<link rel="import" href="../local-dom/local-dom.html">
+
 
 <dom-module id="guitar-string">
     <template>
@@ -44,32 +46,33 @@
                 display: none ;
             }
         </style>
-        <div wrapper>
-            <div rectangle >
-                <!-- <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
-                    [[note]]
-                </div> -->
-            </div>
-            <div acLed >
-                <!-- override default -->
-                <div note>
+        <local-dom mobile="{{mobile}}" tablet="{{tablet}}" desktop="{{desktop}}">
+            <div wrapper>
+                <div rectangle >
+                    <!-- <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
+                        [[note]]
+                    </div> -->
+                </div>
+                <div acLed >
+                    <!-- override default -->
+                    <div note>
+                    </div>
                 </div>
             </div>
-        </div>
+        </local-dom>
     </template>
     <script>
         class GuitarString extends ACLed {
             static get is() { return 'guitar-string'; }
             static get properties() {return {
-                stringType:{type:Number,value:1},
-                rotated:{type:Boolean,value:true}
+                stringType:{type:Number,value:1}
             }}
             constructor() {
                 super();
             }
             ready() {
                 super.ready() ;
-                if(this.rotated) {
+                if (this.___acV_rotation || this.mobile) {
                     if(this.stringType === 1){
                         this.shadowRoot.querySelector('[rectangle]').style.height = '0.7vh' ; 
                         this.shadowRoot.querySelector('[acLed]').style.height = '0.7vh' ; 

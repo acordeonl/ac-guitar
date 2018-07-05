@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../ac-view/ac-led.html">
+<link rel="import" href="../local-dom/local-dom.html">
 
 <dom-module id="guitar-fretnote">
     <template>
@@ -24,7 +25,7 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
-            [rotated] [rectangle]{
+            .vertical [rectangle]{
                 padding-top: 2vh ; 
                 padding-bottom: 2vh ; 
             }
@@ -43,7 +44,7 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
-            [rotated] [acLed] {
+            .vertical [acLed] {
                 padding-top: 2vh ; 
                 padding-bottom: 2vh ;
             }
@@ -65,33 +66,44 @@
                 width: 100%;
                 text-align: center;
             }
-            [rotated] [note]{
+            .vertical [note]{
                 transform: rotate(180deg) ; 
             }
-            [rotated] [noteNames]{
+            .vertical [noteNames]{
                 transform: rotate(180deg) ; 
+            }
+            .horziontal{
+
             }
         </style>
-        <div rotated wrapper>
-            <div rectangle >
-                <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
-                    [[note]]
+        <local-dom mobile="{{mobile}}" tablet="{{tablet}}" desktop="{{desktop}}">
+            <div class$="{{_computeRotation(___acV_rotation,mobile)}}" wrapper>
+                <div rectangle >
+                    <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
+                        [[note]]
+                    </div>
+                </div>
+                <div acLed >
+                    <!-- override default -->
+                    <div note>
+                    </div>
                 </div>
             </div>
-            <div acLed >
-                <!-- override default -->
-                <div note>
-                </div>
-            </div>
-        </div>
+        </local-dom>
     </template>
     <script>
         class GuitarFretnote extends ACLed {
             static get is() { return 'guitar-fretnote'; }
             static get properties() {return {
+                ___acV_rotation:{type:Boolean,value:false},
             }}
             constructor() {
                 super();
+            }
+            _computeRotation(rotation, mobile) {
+                if (rotation || mobile )
+                    return "vertical";
+                return "horizontal";
             }
             _computeDisplay (value) {
                 if (value) {

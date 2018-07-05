@@ -139,8 +139,9 @@
                 width:1vw;
             }
             [rotated] [dot] {
-                height:1.5vh;
-                width:1.5vh;
+                height:1.8vh;
+                width:1.8vh;
+                margin-top:-1vh ;
             }
 
             [dot-wrapper]{
@@ -148,6 +149,21 @@
                 @apply --layout-justified;
                 @apply --layout-center;
                 @apply --layout-center-justified;
+                height: 50%; 
+                width:1px;
+            }
+            [dot1]{
+                margin-top:0.1vw;
+            }
+            [rotated] [dot1]{
+                margin-top:0.2vh ;
+            }
+
+            [dot2]{
+                margin-top:-1.12vw;
+            }
+            [rotated] [dot2]{
+                margin-top:-1.35vh ; 
             }
         </style>
         <style strings>
@@ -236,11 +252,11 @@
                     <div fret style='width:3.15%'></div>
                     <div fret-div ></div>
                     <div fret style='width:2.97%'>
-                        <div dot-wrapper style='height: 50%; width:1px;'>
-                            <div style='margin-top:0.2vw;' dot></div>
+                        <div dot-wrapper >
+                            <div dot1 dot></div>
                         </div>
-                        <div dot-wrapper style='height: 50%; width:1px;'>
-                            <div style='margin-top:-1.15vw;' dot></div>
+                        <div dot-wrapper >
+                            <div dot2 dot></div>
                         </div>
                     </div>
                     <div fret-div ></div>

@@ -62,49 +62,89 @@
             static get is() { return 'guitar-string'; }
             static get properties() {return {
                 stringType:{type:Number,value:1},
+                rotated:{type:Boolean,value:true}
             }}
             constructor() {
                 super();
             }
             ready() {
                 super.ready() ;
-                if(this.stringType === 1){
-                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.2vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.height = '0.2vw' ; 
-                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.08vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.08vw' ; 
+                if(this.rotated) {
+                    if(this.stringType === 1){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.7vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.7vh' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.08vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.08vh' ; 
+                    }
+                    if(this.stringType === 2){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.78vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.78vh' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.1vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.1vh' ; 
+                    }
+                    if(this.stringType === 3){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.86vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.86vh' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.12vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.12vh' ; 
+                    }
+                    if(this.stringType === 4){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.94vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.94vh' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.22vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.22vh' ; 
+                    }
+                    if(this.stringType === 5){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '1.02vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '1.02vh' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.25vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.25vh' ; 
+                    }
+                    if(this.stringType === 6){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '1.1vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '1.1vh' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.3vh' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.3vh' ; 
+                    }
                 }
-                if(this.stringType === 2){
-                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.28vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.height = '0.28vw' ; 
-                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.1vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.1vw' ; 
-                }
-                if(this.stringType === 3){
-                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.36vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.height = '0.36vw' ; 
-                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.12vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.12vw' ; 
-                }
-                if(this.stringType === 4){
-                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.44vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.height = '0.44vw' ; 
-                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.22vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.22vw' ; 
-                }
-                if(this.stringType === 5){
-                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.52vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.height = '0.52vw' ; 
-                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.25vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.25vw' ; 
-                }
-                if(this.stringType === 6){
-                    this.shadowRoot.querySelector('[rectangle]').style.height = '0.6vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.height = '0.6vw' ; 
-                    this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.3vw' ; 
-                    this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.3vw' ; 
-                }
-                    
+                else {
+                    if(this.stringType === 1){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.2vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.2vw' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.08vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.08vw' ; 
+                    }
+                    if(this.stringType === 2){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.28vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.28vw' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.1vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.1vw' ; 
+                    }
+                    if(this.stringType === 3){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.36vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.36vw' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.12vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.12vw' ; 
+                    }
+                    if(this.stringType === 4){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.44vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.44vw' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.22vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.22vw' ; 
+                    }
+                    if(this.stringType === 5){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.52vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.52vw' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.25vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.25vw' ; 
+                    }
+                    if(this.stringType === 6){
+                        this.shadowRoot.querySelector('[rectangle]').style.height = '0.6vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.height = '0.6vw' ; 
+                        this.shadowRoot.querySelector('[rectangle]').style.marginTop = '0.3vw' ; 
+                        this.shadowRoot.querySelector('[acLed]').style.marginTop = '0.3vw' ; 
+                    }
+                }       
             }
         }
         customElements.define('guitar-string', GuitarString);

@@ -8,17 +8,21 @@
     <template>
         <style>
             [wrapper]{
-                height: 100%;
-                width: 100%;
+                height: 100vh;
+                width: 100vw;
                 margin-left: 0px;
                 @apply --layout-center;
                 @apply --layout-horizontal;
                 @apply --layout-center-justified;
             }
+            [rotated][wrapper]{
+                transform: rotate(90deg) ;
+            }
+
             [guitar-wrapper]{
                 margin-top:0 ;
                 margin-left:0;
-                height: 80vh;
+                height: 100%;
                 width: 100%;
                 @apply --layout-horizontal;
                 @apply --layout-center;
@@ -32,6 +36,14 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
+            [rotated] [fretboard]{
+                margin-top:1.8vh ;
+                margin-left:20vh ;
+                width:170vh ; 
+                height:30vh ;
+            }
+
+
             [fret]{
                 height:100%;
                 background-color: var(--ac-led-shadow0,gray);
@@ -68,17 +80,29 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
+            [rotated] [fretnote] {
+                padding-top:1vh ; 
+                padding-bottom:1vh ; 
+            }
+
             [fretpositions]{
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 height: 16vw;
             }
+            [rotated] [fretpositions] {
+                height:24vh ; 
+            }
+            
+
+
             [fretpos]{
                 @apply --layout-vertical;
                 @apply --layout-justified;
                 @apply --layout-center; 
                 @apply --layout-center-justified;
                 color:white ;
+                width:100%;
             }
             [strings]{
                 @apply --layout-vertical;
@@ -86,6 +110,10 @@
                 height: 16vw;
                 position: absolute ;
             }
+            [rotated] [strings] {
+                height:24vh ; 
+            }
+
             [string]{
                 width:100%; 
                 height:3px; 
@@ -110,6 +138,11 @@
                 height:1vw;
                 width:1vw;
             }
+            [rotated] [dot] {
+                height:1.5vh;
+                width:1.5vh;
+            }
+
             [dot-wrapper]{
                 @apply --layout-vertical;
                 @apply --layout-justified;
@@ -117,13 +150,58 @@
                 @apply --layout-center-justified;
             }
         </style>
+        <style strings>
+            [string1]{
+                height:0.2vw;
+            }
+            [rotated] [string1] {
+                height:0.2vh ; 
+            }
+
+            [string2]{
+                height:0.28vw;
+            }
+            [rotated] [string2]{
+                height:0.28vh;
+            }
+
+            [string3]{
+                height:0.36vw;
+            }
+            [rotated] [string3]{
+                height:0.36vh;
+            }
+
+            [string4]{
+                height:0.44vw;
+            }
+            [rotated] [string4]{
+                height:0.44vh;
+            }
+
+            [string5] {
+                height:0.52vw;
+            }
+            [rotated] [string5]{
+                height:0.52vh;
+            }
+
+            [string6] {
+                height:0.6vw;
+            }
+            [rotated] [string6]{
+                height:0.6vh;
+            }
+
+        </style>
+
         <view-audio channel='0'></view-audio>
         <view-audio channel='1'></view-audio>
         <view-audio channel='2'></view-audio>
         <view-audio channel='3'></view-audio>
         <view-audio channel='4'></view-audio>
         <view-audio channel='5'></view-audio>
-        <div wrapper style='margin-left:14px;'>
+        <div rotated wrapper style='margin-left:14px;'>
             <div guitar-wrapper>
                 <div fretboard style='position:absolute;'>
                     <div fret-div style='width:1.98%; border-top-left-radius: 7px;border-bottom-left-radius: 7px;'></div>
@@ -193,12 +271,12 @@
                     </div>
 
                     <div strings style='width:calc(72.25% + 42px);'>
-                            <div string style='height:0.2vw;'></div>
-                            <div string style='height:0.28vw;'></div>
-                            <div string style='height:0.36vw;'></div>
-                            <div string style='height:0.44vw;'></div>
-                            <div string style='height:0.52vw;'></div>
-                            <div string style='height:0.6vw;'></div>
+                            <div string string1 ></div>
+                            <div string string2 ></div>
+                            <div string string3 ></div>
+                            <div string string4 ></div>
+                            <div string string5 ></div>
+                            <div string string6 ></div>
                     </div>
                 </div>
 
@@ -206,54 +284,54 @@
                 <div fretboard style='position:absolute; opacity:1;'>
                     
                     <div strings style='width:calc(72.25% + 42px);'>
-                            <div string-ref style='height:0.2vw;'>
+                            <div string-ref string1>
                                 <guitar-string string-type='1' acLed ac-id='22' channel='0'>  </guitar-string>
                             </div>
-                            <div string-ref style='height:0.28vw;'>
+                            <div string-ref string2>
                                 <guitar-string string-type='2' acLed ac-id='22' channel='1'>  </guitar-string>
                             </div>
-                            <div string-ref style='height:0.36vw;'>
+                            <div string-ref string3>
                                 <guitar-string string-type='3' acLed ac-id='22' channel='2'>  </guitar-string>
                             </div>
-                            <div string-ref style='height:0.44vw;'>
+                            <div string-ref string4>
                                 <guitar-string string-type='4' acLed ac-id='22' channel='3'>  </guitar-string>
                             </div>
-                            <div string-ref style='height:0.52vw;'>
+                            <div string-ref string5>
                                 <guitar-string  string-type='5' acLed ac-id='22' channel='4'>  </guitar-string>
                             </div>
-                            <div string-ref  style='height:0.6vw;'>
+                            <div string-ref string6>
                                 <guitar-string string-type='6' acLed ac-id='22' channel='5'>  </guitar-string>
                             </div>
                     </div>
 
                     <div fret-ref style='width:1.98%; border-top-left-radius: 7px;border-bottom-left-radius: 7px;'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='0' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='0' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='0' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='0' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='0' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='0' channel='5'></guitar-fretnote>
                                </div>
@@ -262,32 +340,32 @@
                     </div>
                     <div fret-ref style='width:5.61%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='1' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='1' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='1' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='1' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='1' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='1' channel='5'></guitar-fretnote>
                                </div>
@@ -297,32 +375,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:5.3%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='2' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='2' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='2' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='2' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='2' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='2' channel='5'></guitar-fretnote>
                                </div>
@@ -332,32 +410,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:5%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='3' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='3' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='3' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='3' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='3' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='3' channel='5'></guitar-fretnote>
                                </div>
@@ -367,32 +445,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:4.72%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='4' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='4' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='4' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='4' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='4' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='4' channel='5'></guitar-fretnote>
                                </div>
@@ -402,32 +480,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:4.45%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='5' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='5' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='5' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='5' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='5' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='5' channel='5'></guitar-fretnote>
                                </div>
@@ -437,32 +515,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:4.2%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='6' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='6' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='6' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='6' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='6' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='6' channel='5'></guitar-fretnote>
                                </div>
@@ -472,32 +550,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:3.97%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='7' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='7' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='7' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='7' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='7' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='7' channel='5'></guitar-fretnote>
                                </div>
@@ -507,32 +585,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:3.75%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='8' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='8' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='8' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='8' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='8' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='8' channel='5'></guitar-fretnote>
                                </div>
@@ -542,32 +620,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:3.54%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='9' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='9' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='9' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='9' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='9' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='9' channel='5'></guitar-fretnote>
                                </div>
@@ -577,32 +655,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:3.34%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='10' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='10' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='10' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='10' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='10' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='10' channel='5'></guitar-fretnote>
                                </div>
@@ -612,32 +690,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:3.15%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='11' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='11' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='11' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='11' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='11' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='11' channel='5'></guitar-fretnote>
                                </div>
@@ -647,32 +725,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.97%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='12' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='12' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='12' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='12' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='12' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='12' channel='5'></guitar-fretnote>
                                </div>
@@ -682,32 +760,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.81%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='13' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='13' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='13' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='13' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='13' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='13' channel='5'></guitar-fretnote>
                                </div>
@@ -717,32 +795,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.65%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='14' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='14' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='14' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='14' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='14' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='14' channel='5'></guitar-fretnote>
                                </div>
@@ -752,32 +830,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.5%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='15' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='15' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='15' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='15' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='15' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='15' channel='5'></guitar-fretnote>
                                </div>
@@ -787,32 +865,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.36%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='16' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='16' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='16' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='16' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='16' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='16' channel='5'></guitar-fretnote>
                                </div>
@@ -822,32 +900,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.23%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='17' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='17' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='17' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='17' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='17' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='17' channel='5'></guitar-fretnote>
                                </div>
@@ -857,32 +935,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:2.1%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='18' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='18' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='18' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='18' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='18' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='18' channel='5'></guitar-fretnote>
                                </div>
@@ -892,32 +970,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:1.98%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='19' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='19' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='19' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='19' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='19' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='19' channel='5'></guitar-fretnote>
                                </div>
@@ -927,32 +1005,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:1.87%'>
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='20' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='20' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='20' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='20' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='20' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='20' channel='5'></guitar-fretnote>
                                </div>
@@ -962,32 +1040,32 @@
                     <div fret-div-ref ></div>
                     <div fret-ref style='width:1.77%;border-top-right-radius: 7px;border-bottom-right-radius: 7px;' >
                         <div fretpositions>
-                            <div fretpos style='height:0.2vw;width:100%;'>
+                            <div fretpos string1>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='21' channel='0'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.28vw;width:100%;'>
+                            <div fretpos string2>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='21' channel='1'></guitar-fretnote>
                                 </div>
                             </div>  
-                            <div fretpos style='height:0.36vw;width:100%;'>
+                            <div fretpos string3>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='21' channel='2'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.44vw;width:100%;'>
+                            <div fretpos string4>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='21' channel='3'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.52vw;width:100%;'>
+                            <div fretpos string5>
                                 <div fretnote>
                                     <guitar-fretnote acLed ac-id='21' channel='4'></guitar-fretnote>
                                 </div>
                             </div>
-                            <div fretpos style='height:0.6vw;width:100%;'>
+                            <div fretpos string6>
                                <div fretnote>
                                    <guitar-fretnote acLed ac-id='21' channel='5'></guitar-fretnote>
                                </div>

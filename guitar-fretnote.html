@@ -24,6 +24,11 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
+            [rotated] [rectangle]{
+                padding-top: 2vh ; 
+                padding-bottom: 2vh ; 
+            }
+            
             [acLed] {
                 position: absolute;
                 width:100%;
@@ -38,6 +43,11 @@
                 @apply --layout-center;
                 @apply --layout-center-justified;
             }
+            [rotated] [acLed] {
+                padding-top: 2vh ; 
+                padding-bottom: 2vh ;
+            }
+
             [wrapper]{
                 position: relative ;
                 @apply --layout-vertical;
@@ -55,8 +65,14 @@
                 width: 100%;
                 text-align: center;
             }
+            [rotated] [note]{
+                transform: rotate(180deg) ; 
+            }
+            [rotated] [noteNames]{
+                transform: rotate(180deg) ; 
+            }
         </style>
-        <div wrapper>
+        <div rotated wrapper>
             <div rectangle >
                 <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
                     [[note]]

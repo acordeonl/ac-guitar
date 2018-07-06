@@ -21,7 +21,6 @@
 
             [guitar-wrapper]{
                 margin-top:0 ;
-                margin-left:0;
                 margin-left:2vw;
                 height: 100%;
                 width: 100%;
@@ -42,10 +41,13 @@
                 @apply --layout-center-justified;
             }
             .vertical [fretboard]{
-                margin-top:1.8vh ;
+                margin-top:0vh ;
                 margin-left:20vh ;
                 width:170vh ; 
                 height:30vh ;
+            }
+            .leftHanded .vertical [fretboard]{
+                margin-left:24vh; 
             }
 
 
@@ -227,7 +229,7 @@
         <view-audio channel='4'></view-audio>
         <view-audio channel='5'></view-audio>
         <local-dom mobile="{{mobile}}" tablet="{{tablet}}" desktop="{{desktop}}">
-            <div class$="{{_computeLeftHanded()}}">
+            <div class$="{{_computeLeftHanded(___acV_leftHanded)}}">
                 <div class$="{{_computeRotation(___acV_rotation,mobile)}}" wrapper >
                     <div guitar-wrapper>
                         <div fretboard style='position:absolute;'>
@@ -1110,14 +1112,13 @@
         class GuitarFretboard extends ACLedGroup {
             static get is() { return 'guitar-fretboard'; }
             static get properties() {return {
-                midiNoteToGUI:{type:Array,value:[]},
-                ___acV_leftHanded:{type:Boolean,value:false}
+                midiNoteToGUI:{type:Array,value:[]}
             }}
             constructor() {
                 super();
             }
-            _computeLeftHanded() {
-                if(this.___acV_leftHanded) {
+            _computeLeftHanded(leftHanded) {
+                if(leftHanded) {
                     return 'leftHanded' ; 
                 }
                 return '' ; 

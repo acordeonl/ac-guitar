@@ -77,15 +77,17 @@
             }
         </style>
         <local-dom mobile="{{mobile}}" tablet="{{tablet}}" desktop="{{desktop}}">
-            <div class$="{{_computeRotation(___acV_rotation,mobile)}}" wrapper>
-                <div rectangle class$="{{_computeLeftHanded()}}"  >
-                    <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
-                        [[note]]
+            <div class$="{{_computeLeftHanded(___acV_leftHanded)}}" >
+                <div class$="{{_computeRotation(___acV_rotation,mobile)}}" wrapper>
+                    <div rectangle >
+                        <div noteNames style$='display:{{_computeDisplay(___acV_displayingNotes)}} ;'>
+                            [[note]]
+                        </div>
                     </div>
-                </div>
-                <div class$="{{_computeLeftHanded()}}" acLed >
-                    <!-- override default -->
-                    <div  note>
+                    <div acLed >
+                        <!-- override default -->
+                        <div  note>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,14 +96,12 @@
     <script>
         class GuitarFretnote extends ACLed {
             static get is() { return 'guitar-fretnote'; }
-            static get properties() {return {
-                ___acV_leftHanded:{type:Boolean,value:false}
-            }}
+            static get properties() {return {}}
             constructor() {
                 super();
             }
-            _computeLeftHanded() {
-                if(this.___acV_leftHanded) {
+            _computeLeftHanded(leftHanded) {
+                if(leftHanded) {
                     return 'leftHanded' ; 
                 }
                 return '' ; 

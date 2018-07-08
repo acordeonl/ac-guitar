@@ -1123,6 +1123,11 @@
                 }
                 return '' ; 
             }
+            ___acV_midiEventToAudioNote (channel, midiNote, origin,initiator) {
+                if (origin.startsWith('___midi_instrument')  || initiator ==='record')
+                    return midiNote ;
+                return this.___acV_midiEventToAudioNoteDefault(channel, midiNote, origin);
+            }
             _setNoteNames () {
                 var nodeList = Polymer.dom(this.root).querySelectorAll('guitar-fretnote');
                 for (var i = 0; i < nodeList.length; i++) {
@@ -1158,19 +1163,35 @@
             ___acV_mapMIDIEventToAcLedState(channel,midiNote){
                 return [1,1] ;
             }
-            ___acV_mapMIDIEventToAcLedId (channel, midiNote) {
-                if(channel === 0)
-                    return[midiNote-64,22] ; 
-                if(channel === 1)
-                    return[midiNote-59,22] ; 
-                if(channel === 2)
-                    return[midiNote-55,22] ; 
-                if(channel === 3)
-                    return[midiNote-50,22] ; 
-                if(channel === 4)
-                    return[midiNote-45,22] ; 
-                if(channel === 5)
-                    return[midiNote-40,22] ; 
+            ___acV_mapMIDIEventToAcLedId (channel, midiNote,origin,initiator) {
+                if (origin.startsWith('___midi_instrument') || initiator ==='record') {
+                    if(channel === 0)
+                        return[-this.___acV_viewPitchDiff+midiNote-64,22] ; 
+                    if(channel === 1)
+                        return[-this.___acV_viewPitchDiff+midiNote-59,22] ; 
+                    if(channel === 2)
+                        return[-this.___acV_viewPitchDiff+midiNote-55,22] ; 
+                    if(channel === 3)
+                        return[-this.___acV_viewPitchDiff+midiNote-50,22] ; 
+                    if(channel === 4)
+                        return[-this.___acV_viewPitchDiff+midiNote-45,22] ; 
+                    if(channel === 5)
+                        return[-this.___acV_viewPitchDiff+midiNote-40,22] ;
+                }
+                else{
+                    if(channel === 0)
+                        return[this.___acV_recordingPitchDiff-this.___acV_viewPitchDiff+midiNote-64,22] ; 
+                    if(channel === 1)
+                        return[this.___acV_recordingPitchDiff-this.___acV_viewPitchDiff+midiNote-59,22] ; 
+                    if(channel === 2)
+                        return[this.___acV_recordingPitchDiff-this.___acV_viewPitchDiff+midiNote-55,22] ; 
+                    if(channel === 3)
+                        return[this.___acV_recordingPitchDiff-this.___acV_viewPitchDiff+midiNote-50,22] ; 
+                    if(channel === 4)
+                        return[this.___acV_recordingPitchDiff-this.___acV_viewPitchDiff+midiNote-45,22] ; 
+                    if(channel === 5)
+                        return[this.___acV_recordingPitchDiff-this.___acV_viewPitchDiff+midiNote-40,22] ;
+                }
             }
             ___acV_onAddPitch () {
                 this._setNoteNames();
